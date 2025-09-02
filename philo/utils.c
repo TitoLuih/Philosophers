@@ -6,15 +6,21 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:58:40 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/09/01 09:26:53 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/09/02 13:25:10 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+int	ft_error(char *str)
+{
+	printf(str);
+	return(EXIT_FAILURE);
+}
+
 int	ft_atoi(const char *str)
 {
-	int	res;
+	int	res;	
 	int	sign;
 	int	cont;
 
