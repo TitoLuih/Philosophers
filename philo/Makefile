@@ -1,29 +1,26 @@
 NAME = philo
 CC = cc
-FLAGS = -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall
 
-SRC = init.c\
-		philo.c\
-		utils.c\
-		check_args.c\
-		init.c\
-		utils.c\
-		
+SRC = main.c \
+      utils.c \
+      check_args.c \
+      init.c
+
 OBJS = $(SRC:.c=.o)
 
 RM = rm -f
+
+%.o: %.c philo.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c philo.h
-	$(CC) $(CFLAGS)  -c $< -o $@
-
 clean:
 	$(RM) $(OBJS)
-	@make -C $(LIBFT_DIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
