@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 11:24:28 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/09/02 13:21:51 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:50:24 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,38 +15,37 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <pthread.h>
-	
+
+typedef struct s_rules
+{
+	int				n_philos;
+	int				die_time;
+	int				eat_time;
+	int				sleep_time;
+	int				meals_required;
+	long long		start_time;
+	int				is_dead;
+	pthread_mutex_t	write_lock;
+	pthread_mutex_t	death_lock;
+}	t_rules;
+
+typedef struct s_philo
+{
+	int				id;
+	int				meals_done;
+	long long		last_meal;
+	t_rules			*rules;
+	pthread_t		thread_id;
+	pthread_mutex_t	meal_lock;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+}	t_philo;
+
 //check_args
 int	check_args(int n, char **str);
 //utils
 int	ft_atoi(const char *str);
-
-
-typedef struct philo
-{
-	int				id;
-	int				is_eating;
-	long long		last_time_eated;
-	int				times_eat;
-	int				is_alive;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-	pthread_t		thread;
-	t_table			*tab;
-}	t_philo;
-
-typedef struct table
-{
-	int				death_flag;
-	int				philo_amount;
-	long long		death_time;
-	long long		eat_time;
-	long long		sleep_time;
-	int				nbr_eat;
-	long long		starttime;
-	pthread_t		thread;
-	pthread_mutex_t	*writer;
-	t_philo			**philosophers;
-}	t_table;
+int	ft_error(char *str);
+int	ft_isdigit(int c);
 
 #endif

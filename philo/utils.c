@@ -6,7 +6,7 @@
 /*   By: lruiz-to <lruiz-to@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 12:58:40 by lruiz-to          #+#    #+#             */
-/*   Updated: 2025/09/02 13:25:10 by lruiz-to         ###   ########.fr       */
+/*   Updated: 2025/09/02 15:50:06 by lruiz-to         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_error(char *str)
 {
 	printf(str);
-	return(EXIT_FAILURE);
+	return (EXIT_FAILURE);
 }
 
 int	ft_atoi(const char *str)
@@ -42,4 +42,11 @@ int	ft_atoi(const char *str)
 		cont++;
 	}
 	return (res * sign);
+}
+int	ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (EXIT_SUCCESS);
+	else
+		return (EXIT_FAILURE);
 }
